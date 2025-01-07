@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autonomes Gewächshaus</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 <header>
@@ -14,18 +16,18 @@
 <main>
     <section id="sensors">
         <h2>Sensordaten</h2>
-        <div class="data">
-            <p>Bodenfeuchtigkeit: <span id="soil-moisture">--</span>%</p>
-            <p>Luftfeuchtigkeit: <span id="air-humidity">--</span>%</p>
-            <p>Temperatur: <span id="temperature">--</span>°C</p>
-        </div>
+        <canvas id="soilMoistureChart"></canvas>
+        <canvas id="airHumidityChart"></canvas>
+        <canvas id="temperatureChart"></canvas>
     </section>
 
     <section id="devices">
         <h2>Gerätestatus</h2>
         <div class="data">
             <p>Wasserpumpe: <span id="water-pump-status">--</span></p>
+            <button id="toggle-water-pump">Wasserpumpe Ein/Aus</button>
             <p>Lüfter: <span id="fan-status">--</span></p>
+            <button id="toggle-fans">Lüfter Ein/Aus</button>
         </div>
     </section>
 </main>
@@ -33,7 +35,5 @@
 <footer>
     <p>© 2025 Autonomes Gewächshaus</p>
 </footer>
-
-<script src="script.js"></script>
 </body>
 </html>

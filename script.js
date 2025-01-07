@@ -1,30 +1,51 @@
-// Mocked Sensor Data
-const sensorData = {
-    soilMoisture: 45,
-    airHumidity: 60,
-    temperature: 22,
-    waterPumpStatus: "Aus",
-    fanStatus: "Ein"
-};
+document.addEventListener('DOMContentLoaded', function() {
+    // Create charts for soil moisture, air humidity, and temperature
+    const soilMoistureCtx = document.getElementById('soilMoistureChart').getContext('2d');
+    const airHumidityCtx = document.getElementById('airHumidityChart').getContext('2d');
+    const temperatureCtx = document.getElementById('temperatureChart').getContext('2d');
 
-// Function to update the data on the dashboard
-function updateDashboard() {
-    document.getElementById("soil-moisture").textContent = sensorData.soilMoisture;
-    document.getElementById("air-humidity").textContent = sensorData.airHumidity;
-    document.getElementById("temperature").textContent = sensorData.temperature;
-    document.getElementById("water-pump-status").textContent = sensorData.waterPumpStatus;
-    document.getElementById("fan-status").textContent = sensorData.fanStatus;
-}
+    const soilMoistureChart = new Chart(soilMoistureCtx, {
+        type: 'line',
+        data: { labels: [], datasets: [{ label: 'Bodenfeuchtigkeit (%)', data: [] }] },
+        options: { responsive: true, scales: { x: { beginAtZero: true } } }
+    });
 
-// Simulate real-time updates every 5 seconds
-setInterval(() => {
-    // Mock sensor data changes
-    sensorData.soilMoisture = Math.floor(Math.random() * 100);
-    sensorData.airHumidity = Math.floor(Math.random() * 100);
-    sensorData.temperature = Math.floor(Math.random() * 35);
+    const airHumidityChart = new Chart(airHumidityCtx, {
+        type: 'line',
+        data: { labels: [], datasets: [{ label: 'Luftfeuchtigkeit (%)', data: [] }] },
+        options: { responsive: true, scales: { x: { beginAtZero: true } } }
+    });
 
-    updateDashboard();
-}, 5000);
+    const temperatureChart = new Chart(temperatureCtx, {
+        type: 'line',
+        data: { labels: [], datasets: [{ label: 'Temperatur (°C)', data: [] }] },
+        options: { responsive: true, scales: { x: { beginAtZero: true } } }
+    });
 
-// Initial update on load
-updateDashboard();
+    // Manual control buttons
+    document.getElementById('toggle-water-pump').addEventListener('click', function() {
+        alert('Wasserpumpe toggled!'); // Replace with API call
+    });
+
+    document.getElementById('toggle-fans').addEventListener('click', function() {
+        alert('Lüfter toggled!'); // Replace with API call
+    });
+
+    // Simulated data updates
+    function updateCharts() {
+        const timestamp = new Date().toLocaleTimeString();
+        soilMoistureChart.data.labels.push(timestamp);
+        soilMoistureChart.data.datasets[0].data.push(Math.random() * 100);
+        soilMoistureChart.update();
+
+        airHumidityChart.data.labels.push(timestamp);
+        airHumidityChart.data.datasets[0].data.push(Math.random() * 100);
+        airHumidityChart.update();
+
+        temperatureChart.data.labels.push(timestamp);
+        temperatureChart.data.datasets[0].data.push(20 + Math.random() * 10);
+        temperatureChart.update();
+    }
+
+    setInterval(updateCharts, 3000);
+});
