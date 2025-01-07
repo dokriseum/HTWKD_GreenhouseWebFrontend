@@ -14,21 +14,35 @@
 </header>
 
 <main>
-    <section id="sensors">
+    <section id="sensors" class="card">
         <h2>Sensordaten</h2>
-        <canvas id="soilMoistureChart"></canvas>
-        <canvas id="airHumidityChart"></canvas>
-        <canvas id="temperatureChart"></canvas>
+        <div class="chart-container">
+            <canvas id="soilMoistureChart"></canvas>
+            <canvas id="airHumidityChart"></canvas>
+            <canvas id="temperatureChart"></canvas>
+        </div>
     </section>
 
-    <section id="devices">
+    <section id="devices" class="card">
         <h2>Gerätestatus</h2>
-        <div class="data">
-            <p>Wasserpumpe: <span id="water-pump-status">--</span></p>
-            <button id="toggle-water-pump">Wasserpumpe Ein/Aus</button>
-            <p>Lüfter: <span id="fan-status">--</span></p>
-            <button id="toggle-fans">Lüfter Ein/Aus</button>
+        <div class="device-group">
+            <div class="device-control">
+                <h3>Wasserpumpe</h3>
+                <p>Aktueller Durchlauf: <span id="water-flow-rate">--</span> L/min</p>
+                <button id="toggle-water-pump" class="toggle-button">Ein/Aus</button>
+            </div>
+            <div class="device-control">
+                <h3>Lüfter</h3>
+                <p>Aktuelle Geschwindigkeit: <span id="fan-speed">--</span> U/min</p>
+                <button id="toggle-fans" class="toggle-button">Ein/Aus</button>
+            </div>
         </div>
+    </section>
+
+    <section id="summary" class="card">
+        <h2>Zusammenfassung</h2>
+        <p>Gesamter Wasserverbrauch heute: <span id="total-water">--</span> L</p>
+        <p>Durchschnittliche Temperatur: <span id="avg-temperature">--</span> °C</p>
     </section>
 </main>
 
