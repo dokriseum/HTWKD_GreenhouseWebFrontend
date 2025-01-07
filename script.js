@@ -3,6 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const waterPumpButton = document.getElementById('toggle-water-pump');
     const fanButton = document.getElementById('toggle-fans');
 
+    // HTML elements for values
+    const soilMoistureText = document.getElementById('soil-moisture');
+    const airHumidityText = document.getElementById('air-humidity');
+    const temperatureText = document.getElementById('temperature');
+    const waterFlowRateText = document.getElementById('water-flow-rate');
+    const fanSpeedText = document.getElementById('fan-speed');
+
+    // Function to simulate value updates
+    function updateTextValues() {
+        soilMoistureText.textContent = (Math.random() * 100).toFixed(1); // Simulated percentage
+        airHumidityText.textContent = (Math.random() * 100).toFixed(1); // Simulated percentage
+        temperatureText.textContent = (20 + Math.random() * 10).toFixed(1); // Simulated temperature
+        waterFlowRateText.textContent = (Math.random() * 10).toFixed(1); // Simulated L/min
+        fanSpeedText.textContent = (500 + Math.random() * 1500).toFixed(0); // Simulated RPM
+    }
+
+    // Call the update function periodically
+    setInterval(updateTextValues, 2000);
+
     function toggleButton(button) {
         if (button.classList.contains('off')) {
             button.classList.remove('off');
