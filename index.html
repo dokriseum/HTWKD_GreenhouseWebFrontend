@@ -8,32 +8,44 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="dark-theme">
 <header>
     <h1>Autonomes Gewächshaus Dashboard</h1>
 </header>
 
 <main>
-    <section id="sensors" class="card">
-        <h2>Sensordaten</h2>
-        <div class="chart-container">
-            <canvas id="soilMoistureChart"></canvas>
-            <canvas id="airHumidityChart"></canvas>
-            <canvas id="temperatureChart"></canvas>
+    <section id="overview" class="card">
+        <h2>Überblick</h2>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <h3>Bodenfeuchtigkeit</h3>
+                <p><span id="soil-moisture">--</span>%</p>
+                <canvas id="soilMoistureChart"></canvas>
+            </div>
+            <div class="overview-item">
+                <h3>Luftfeuchtigkeit</h3>
+                <p><span id="air-humidity">--</span>%</p>
+                <canvas id="airHumidityChart"></canvas>
+            </div>
+            <div class="overview-item">
+                <h3>Temperatur</h3>
+                <p><span id="temperature">--</span>°C</p>
+                <canvas id="temperatureChart"></canvas>
+            </div>
         </div>
     </section>
 
     <section id="devices" class="card">
-        <h2>Gerätestatus</h2>
-        <div class="device-group">
+        <h2>Gerätesteuerung</h2>
+        <div class="devices-grid">
             <div class="device-control">
                 <h3>Wasserpumpe</h3>
-                <p>Aktueller Durchlauf: <span id="water-flow-rate">--</span> L/min</p>
+                <p>Durchflussrate: <span id="water-flow-rate">--</span> L/min</p>
                 <button id="toggle-water-pump" class="toggle-button">Ein/Aus</button>
             </div>
             <div class="device-control">
                 <h3>Lüfter</h3>
-                <p>Aktuelle Geschwindigkeit: <span id="fan-speed">--</span> U/min</p>
+                <p>Geschwindigkeit: <span id="fan-speed">--</span> U/min</p>
                 <button id="toggle-fans" class="toggle-button">Ein/Aus</button>
             </div>
         </div>
@@ -41,8 +53,10 @@
 
     <section id="summary" class="card">
         <h2>Zusammenfassung</h2>
-        <p>Gesamter Wasserverbrauch heute: <span id="total-water">--</span> L</p>
-        <p>Durchschnittliche Temperatur: <span id="avg-temperature">--</span> °C</p>
+        <div class="summary-grid">
+            <p>Wasserverbrauch heute: <span id="total-water">--</span> L</p>
+            <p>Durchschnittliche Temperatur: <span id="avg-temperature">--</span> °C</p>
+        </div>
     </section>
 </main>
 
