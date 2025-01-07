@@ -58,7 +58,6 @@ canvas {
 
 .toggle-button {
     padding: 0.7rem 1.5rem;
-    background-color: #4caf50;
     border: none;
     border-radius: 5px;
     color: white;
@@ -67,13 +66,16 @@ canvas {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.toggle-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+.toggle-button.on {
+    background-color: #4caf50;
 }
 
-.toggle-button.active {
+.toggle-button.off {
     background-color: #f44336;
+}
+
+.toggle-button:hover {
+    transform: scale(1.05);
 }
 
 footer {

@@ -1,19 +1,26 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize toggle states
     const waterPumpButton = document.getElementById('toggle-water-pump');
     const fanButton = document.getElementById('toggle-fans');
 
+    function toggleButton(button) {
+        if (button.classList.contains('off')) {
+            button.classList.remove('off');
+            button.classList.add('on');
+            button.textContent = 'Ein';
+        } else {
+            button.classList.remove('on');
+            button.classList.add('off');
+            button.textContent = 'Aus';
+        }
+    }
+
     waterPumpButton.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const status = this.classList.contains('active') ? 'eingeschaltet' : 'ausgeschaltet';
-        alert(`Wasserpumpe ist jetzt ${status}`);
+        toggleButton(waterPumpButton);
     });
 
     fanButton.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const status = this.classList.contains('active') ? 'eingeschaltet' : 'ausgeschaltet';
-        alert(`Lüfter ist jetzt ${status}`);
+        toggleButton(fanButton);
     });
 
     // Chart updates (simulate live data)
